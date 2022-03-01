@@ -18,7 +18,7 @@ import org.apache.flink.util.Collector;
  * @Date: 2022/1/11 10:34 PM
  * @Desc: 每3个相同的Key就计算一下平均值
  * @Version: v1.0
- *
+ * <p>
  * 两个重点<br/>
  * 1. 一个Key一个ValueState
  * <br/>
@@ -77,7 +77,7 @@ public class FlinkState02ListState {
     // 第二个泛型参数: 输出数据的类型
     private static class CountAverageWithListState extends RichFlatMapFunction<Tuple2<Long, Long>, Tuple2<Long, Double>> {
 
-        // private ValueState<Tuple2<Long, Long>> countAndSumState;
+        private ValueState<Tuple2<Long, Long>> countAndSumState;
         private ListState<Long> listState;
 
         /**
@@ -92,12 +92,12 @@ public class FlinkState02ListState {
          */
         @Override
         public void open(Configuration parameters) throws Exception {
-//            ValueStateDescriptor<Tuple2<Long, Long>> countAndSumDesc = new ValueStateDescriptor<Tuple2<Long, Long>>("countAndSum",
-//                    Types.TUPLE(Types.LONG, Types.LONG));
-            new ListStateDescriptor<Integer>(
+            ValueStateDescriptor<Tuple2<Long, Long>> countAndSumDesc = new ValueStateDescriptor<Tuple2<Long, Long>>("countAndSum",
+                    Types.TUPLE(Types.LONG, Types.LONG));
+            ListStateDescriptor<Integer> avg_listState = new ListStateDescriptor<>(
                     "avg_listState",
-                    Typles
-            )
+                    Types.INT
+            );
 
             countAndSumState = getRuntimeContext().getState(countAndSumDesc);
         }

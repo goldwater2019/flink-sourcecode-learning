@@ -1,6 +1,8 @@
 package com.lambda.flink.state;
 
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.runtime.state.FunctionInitializationContext;
+import org.apache.flink.runtime.state.FunctionSnapshotContext;
 import org.apache.flink.streaming.api.checkpoint.CheckpointedFunction;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 
@@ -29,5 +31,14 @@ public class FlinkState01OperateState {
      */
     class UDPrint implements SinkFunction<Tuple2<String, Integer>>, CheckpointedFunction {
 
+        @Override
+        public void snapshotState(FunctionSnapshotContext context) throws Exception {
+
+        }
+
+        @Override
+        public void initializeState(FunctionInitializationContext context) throws Exception {
+
+        }
     }
 }
