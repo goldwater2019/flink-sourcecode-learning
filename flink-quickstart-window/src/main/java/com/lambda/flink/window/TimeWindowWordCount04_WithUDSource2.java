@@ -19,7 +19,7 @@ import java.util.Locale;
  * @Version: v1.0
  */
 
-public class TimeWindowWordCount_WithUDSource2 {
+public class TimeWindowWordCount04_WithUDSource2 {
     /**
      * 需求: 每隔5s计算最近10s的单词次数
      * @param args

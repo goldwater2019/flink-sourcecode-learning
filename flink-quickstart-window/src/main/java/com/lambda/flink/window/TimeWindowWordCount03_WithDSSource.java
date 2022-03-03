@@ -19,7 +19,7 @@ import java.util.Locale;
  * @Version: v1.0
  */
 
-public class TimeWindowWordCount_WithDSSource {
+public class TimeWindowWordCount03_WithDSSource {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         DataStreamSource<String> stringDataStreamSource = env.addSource(new OrderedProcessWindowTestSource());
